@@ -1,9 +1,9 @@
 import { getTicketMaster } from "./apiTicketMaster.js";
 
 const mapDraw = document.querySelector("#map");
-const infoEventos = document.querySelector("#infoEventos");
+const infoEvents = document.querySelector("#infoEvents");
 
-const map = L.map("map").setView([40.6315113, -74.0182606], 12);
+const map = L.map("map").setView([40.6315113, -74.0182606], 10);
 
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution:
@@ -17,39 +17,63 @@ let addressEvent = document.querySelector("#addressEvent");
 let priceRanges = document.querySelector("#priceRanges");
 let imageEvent = document.querySelector("#imageEvent");
 
-const showEvents = async () => {
-  const dataEvents = await getTicketMaster();
-
-  dataEvents.forEach((item) => {
-    //loop the array
-
-    console.log(item);
+const showEvents = (events) => {
+  const searchingBar = document.querySelector("#searchingBar");
+  events.forEach((event) => {
+    console.log(event);
 
     const popupEvent = L.popup().setLatLng([
-      item._embedded.venues[0].location.latitude,
-      item._embedded.venues[0].location.longitude,
+      event._embedded.venues[0].location.latitude,
+      event._embedded.venues[0].location.longitude,
     ]).setContent(`
-      <h3>${item.name}</h3>
-      <h3>Local date: ${item.dates.start.localDate} Local time: ${item.dates.start.localTime}</h3>
-      <p>Address: ${item._embedded.venues[0].address.line1}</p>
-      <p>Price:  $${item.priceRanges[0].min}</p>
+      <h3>${event.name}</h3>
+      <h3>Local date: ${event.dates.start.localDate} Local time: ${event.dates.start.localTime}</h3>
+      <p>Address: ${event._embedded.venues[0].address.line1}</p>
       `);
-
+      //<p>Price:  $${event.priceRanges[0].min}</p>      
+      
     const marker = L.marker([
-      item._embedded.venues[0].location.latitude,
-      item._embedded.venues[0].location.longitude,
+      event._embedded.venues[0].location.latitude,
+      event._embedded.venues[0].location.longitude,
     ])
       .addTo(map)
       .bindPopup(popupEvent)
       .openPopup();
 
     marker.on("click", () => {
-      nameEvent.innerHTML = `<p>${item.name}</p>`;
-      dateEvent.innerHTML = `<p>Local date: ${item.dates.start.localDate} Local time: ${item.dates.start.localTime}</p>`;
-      addressEvent.innerHTML = `<p>Address: ${item._embedded.venues[0].address.line1}</p>`;
-      priceRanges.innerHTML = `<p>Price:  $${item.priceRanges[0].min}</p>`;
-      imageEvent.src = `${item.images[0].url}`;
+      nameEvent.innerHTML = `<p>${event.name}</p>`;
+      dateEvent.innerHTML = `<p>Local date: ${event.dates.start.localDate} Local time: ${event.dates.start.localTime}</p>`;
+      addressEvent.innerHTML = `<p>Address: ${event._embedded.venues[0].address.line1}</p>`;
+      // priceRanges.innerHTML = `<p>Price:  $${event.priceRanges[0].min}</p>`;
+      imageEvent.src = `${event.images[0].url}`;
     });
   });
 };
-showEvents();
+
+let searchingButton = document.querySelector("#searchingButton");
+
+searchingButton.addEventListener("click", async () => {
+  try {
+    let searchingByCity = document.querySelector("#searchingByCity");
+  let citySelected = searchingByCity.value;
+  let events = await getTicketMaster(citySelected);
+  showEvents(events);
+  }
+  catch {
+    alert("You must enter a valid name")
+  }
+});
+
+
+//To do
+/*
+searchingByDate
+searchingByEvent
+
+get map center on screen
+Geolocalizacion
+
+dropdown city options
+
+
+*/
