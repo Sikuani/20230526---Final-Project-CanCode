@@ -1,4 +1,4 @@
-import { getTicketMaster } from "./apiTicketMaster.js";
+import { getTicketMaster, getCities } from "./apiTicketMaster.js";
 
 const mapDraw = document.querySelector("#map");
 const infoEvents = document.querySelector("#infoEvents");
@@ -20,7 +20,7 @@ let imageEvent = document.querySelector("#imageEvent");
 const showEvents = (events) => {
   const searchingBar = document.querySelector("#searchingBar");
   events.forEach((event) => {
-    console.log(event);
+    //console.log(event);
 
     const popupEvent = L.popup().setLatLng([
       event._embedded.venues[0].location.latitude,
@@ -30,8 +30,8 @@ const showEvents = (events) => {
       <h3>Local date: ${event.dates.start.localDate} Local time: ${event.dates.start.localTime}</h3>
       <p>Address: ${event._embedded.venues[0].address.line1}</p>
       `);
-      //<p>Price:  $${event.priceRanges[0].min}</p>      
-      
+    //<p>Price:  $${event.priceRanges[0].min}</p>
+
     const marker = L.marker([
       event._embedded.venues[0].location.latitude,
       event._embedded.venues[0].location.longitude,
@@ -50,20 +50,47 @@ const showEvents = (events) => {
   });
 };
 
+//function to city list
+const dropdownCities = ( cities ) => {
+  let EventCities = document.querySelector("#EventCities");
+  cities.forEach(city => { // get all cities from array
+      const cityOption = document.createElement("option")
+      cityOption.textContent = city;
+      cityOption.value = city
+      EventCities.appendChild(cityOption);
+  }) 
+}
+
+//function to get api info
+async function getCitiesNames() {
+  try {
+    const citiesOptions = await getCities();
+    dropdownCities(citiesOptions)
+  }
+  catch {
+    console.log("error");
+  }
+}
+getCitiesNames()
+
+
+
 let searchingButton = document.querySelector("#searchingButton");
 
 searchingButton.addEventListener("click", async () => {
   try {
     let searchingByCity = document.querySelector("#searchingByCity");
-  let citySelected = searchingByCity.value;
-  let events = await getTicketMaster(citySelected);
-  showEvents(events);
-  }
+    let EventCities = document.querySelector("#EventCities");
+    let getCityValue = EventCities.value
+    let citySelected = searchingByCity.value;
+    let events = await getTicketMaster(citySelected);
+    showEvents(events);
+  } 
+  
   catch {
-    alert("You must enter a valid name")
+    alert("You must enter a valid name");
   }
 });
-
 
 //To do
 /*
