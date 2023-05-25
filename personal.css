@@ -1,0 +1,97 @@
+:root {
+  --bgcolor-primary: #ccd6a6;
+  --bgcolor-secundary: #dae2b6;
+  --bgcolor-dark: #f4ead5;
+  --bgcolor-light: #fffbe9;
+  --bgcolor-brown: #9d6357;
+  --bgcolor-gray: #f4f4f4;
+  --textcolor-dark: #222;
+  --textcolor-lightbrown: #cfb6b6;
+  --textcolor-lightSalmon: #ffa07a;
+  --textcolor-light: #fff;
+  --textcolor-red: #ff0000;
+
+  --shadow: 2px 2px 5px rgba(104, 104, 104, 0.8);
+  --opacity: rgba(104, 104, 104, 0.6);
+
+  --border: 2px solid #666;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 3em;
+}
+h2 {
+  font-size: 2.5em;
+}
+h3 {
+  font-size: 2em;
+}
+h4 {
+  font-size: 1.5em;
+}
+p {
+  font-size: 1em;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  /* overflow: hidden; */
+}
+
+section {
+  max-width: 80rem;
+  margin: 2rem auto;
+}
+
+section:nth-child(odd) {
+  background: var(--bgcolor-dark);
+  margin: 2rem auto;
+}
+
+ul {
+  list-style-type: none;
+  /* padding: 0; */
+}
+
+a {
+  text-decoration: none;
+  color: var(--textcolor-dark);
+}
+
+.btn {
+  background: var(--bgcolor-secundary);
+  color: var(--textcolor-dark);
+  padding: 0.625rem 2rem;
+  border-radius: 5px;
+  border: 2px solid var(--bgcolor-primary);
+  outline: none;
+  transition: 0.2s ease-in;
+  font-weight: 800;
+}
+
+.btn:hover {
+  background: var(--bgcolor-primary);
+  color: var(--textcolor-red);
+  /* transform: scale(0.95); */
+  transform: scale(1.1);
+  font-weight: 800;
+}
+
+input {
+  border: none;
+  outline: none;
+}
+
+input:hover {
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+}

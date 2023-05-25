@@ -1,106 +1,78 @@
-import { getTicketMaster, getCities } from "./apiTicketMaster.js";
+import { fetchData, fetchCities, fetchEventTypes } from './api.js';
+import { showMarkers, popupEvent } from './map.js';
 
-const mapDraw = document.querySelector("#map");
-const infoEvents = document.querySelector("#infoEvents");
+/* L.marker([40.758895, -73.985131])
+  .addTo(map)
+  .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+  .openPopup(); */
 
-const map = L.map("map").setView([40.6315113, -74.0182606], 10);
+const showCities = (cities) => {
+  const selectCities = document.querySelector('#select-cities');
 
-L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  attribution:
-    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-}).addTo(map);
-
-let eventsTicketMaster = document.querySelector("#eventsTicketMaster");
-let nameEvent = document.querySelector("#nameEvent");
-let dateEvent = document.querySelector("#dateEvent");
-let addressEvent = document.querySelector("#addressEvent");
-let priceRanges = document.querySelector("#priceRanges");
-let imageEvent = document.querySelector("#imageEvent");
-
-const showEvents = (events) => {
-  const searchingBar = document.querySelector("#searchingBar");
-  events.forEach((event) => {
-    //console.log(event);
-
-    const popupEvent = L.popup().setLatLng([
-      event._embedded.venues[0].location.latitude,
-      event._embedded.venues[0].location.longitude,
-    ]).setContent(`
-      <h3>${event.name}</h3>
-      <h3>Local date: ${event.dates.start.localDate} Local time: ${event.dates.start.localTime}</h3>
-      <p>Address: ${event._embedded.venues[0].address.line1}</p>
-      `);
-    //<p>Price:  $${event.priceRanges[0].min}</p>
-
-    const marker = L.marker([
-      event._embedded.venues[0].location.latitude,
-      event._embedded.venues[0].location.longitude,
-    ])
-      .addTo(map)
-      .bindPopup(popupEvent)
-      .openPopup();
-
-    marker.on("click", () => {
-      nameEvent.innerHTML = `<p>${event.name}</p>`;
-      dateEvent.innerHTML = `<p>Local date: ${event.dates.start.localDate} Local time: ${event.dates.start.localTime}</p>`;
-      addressEvent.innerHTML = `<p>Address: ${event._embedded.venues[0].address.line1}</p>`;
-      // priceRanges.innerHTML = `<p>Price:  $${event.priceRanges[0].min}</p>`;
-      imageEvent.src = `${event.images[0].url}`;
-    });
+  cities.sort().forEach((city) => {
+    const option = document.createElement('option');
+    option.value = city;
+    option.textContent = city;
+    selectCities.appendChild(option);
   });
 };
 
-//function to city list
-const dropdownCities = ( cities ) => {
-  let EventCities = document.querySelector("#EventCities");
-  cities.forEach(city => { // get all cities from array
-      const cityOption = document.createElement("option")
-      cityOption.textContent = city;
-      cityOption.value = city
-      EventCities.appendChild(cityOption);
-  }) 
+const showEvents = (events) => {
+  const eventsContainer = document.querySelector('#events-container');
+  events.forEach((event) => {
+    const eventName = document.createElement('p');
+    const eventLocation = event._embedded.venues[0].location;
+    eventName.textContent = event.name;
+    eventsContainer.appendChild(eventName);
+
+    showMarkers(eventLocation);
+  });
+};
+
+const showEventTypes = (eventType) => {
+  const selectTypeEvents = document.querySelector('#selectTypeEvents');
+
+  eventType.sort().forEach((event) => {
+    const option = document.createElement('option');
+    option.value = event;
+    option.textContent = event;
+    selectTypeEvents.appendChild(option);
+  });
 }
 
-//function to get api info
-async function getCitiesNames() {
-  try {
-    const citiesOptions = await getCities();
-    dropdownCities(citiesOptions)
-  }
-  catch {
-    console.log("error");
-  }
-}
-getCitiesNames()
 
+const searchButton = document.querySelector('#search-button');
+searchButton.addEventListener('click', async () => {
+  /* const searchInput = document.querySelector('#search-input');
+  const city = searchInput.value; */
+  const selectCities = document.querySelector('#select-cities');
+  const selectedCity = selectCities.value;
 
+  const selectedDate = document.querySelector('#date-picker').value;
 
-let searchingButton = document.querySelector("#searchingButton");
+  const events = await fetchData(selectedCity);
 
-searchingButton.addEventListener("click", async () => {
-  try {
-    let searchingByCity = document.querySelector("#searchingByCity");
-    let EventCities = document.querySelector("#EventCities");
-    let getCityValue = EventCities.value
-    let citySelected = searchingByCity.value;
-    let events = await getTicketMaster(citySelected);
+  popupEvent(events)
+
+  if (selectedDate !== '') {
+    const filteredEvents = events.filter(
+      (event) => event.dates.start.localDate === selectedDate
+    );
+    filteredEvents.length <= 0 ? alert('No events') : showEvents(filteredEvents);
+  } else {
     showEvents(events);
-  } 
-  
-  catch {
-    alert("You must enter a valid name");
   }
 });
 
-//To do
-/*
-searchingByDate
-searchingByEvent
+const getData = async () => {
+  try {
+    const cities = await fetchCities();
+    showCities(cities);
+    const events = await fetchEventTypes();
+    showEventTypes(events)
+  } catch (error) {
+    console.log('Error to obtain cities: ', error);
+  }
+};
 
-get map center on screen
-Geolocalizacion
-
-dropdown city options
-
-
-*/
+getData();

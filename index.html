@@ -1,65 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-      integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
-      crossorigin=""
-    />
-    <title>Document</title>
-  </head>
 
-  <body>
-    <div id="searchingBar">
-      <select name="" id="EventCities">
-        <option value="">Select a city</option>
-      </select>
-      <!-- <input type="text" id="searchingByCity"> -->
-      <!-- <input type="text" id="searchingByDate">
-      <input type="text" id="searchingByEvent"> -->
-      <button id="searchingButton">Search</button>
-    </div>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+  <link rel="stylesheet" href="personal.css" />
+  <link rel="stylesheet" href="style.css" />
+  <title>City Spot</title>
+</head>
 
-    <div id="events">
-      <h1>New York City Events</h1>
-    </div>
-    <div id="map"></div>
-    <div id="infoEvents"></div>
+<body>
+  <h1>City Spot</h1>
 
-    <div id="eventsTicketMaster">
-      <h2>Eventos TicketMaster</h2>
-      <h3 id="nameEvent"></h3>
-      <h3 id="dateEvent"></h3>
-      <h3 id="addressEvent"></h3>
-      <h3 id="priceRanges"></h3>
-      <img id="imageEvent" src="" alt="" />
-    </div>
+  <div id="search-container">
+    <input type="date" id="date-picker">
+    <select name="cities" id="select-cities">
+      <option value="">Select city</option>
+    </select>
+    <select name="event-type" id="selectTypeEvents">
+      <option value="">Select event</option>
+    </select>
+    <button id="search-button">Search</button>
+  </div>
 
-    <script
-      src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
-      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
-      crossorigin=""
-    ></script>
-    <script src="index.js" type="module"></script>
-  </body>
+  <div id="map"></div>
+
+  <div id="events-container"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+  <script type="module" src="index.js" defer></script>
+</body>
+
 </html>
 
-<!-- Codigo de la pagina -->
-<!-- <html>
-  <head>
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-  </head>
-  <body>
-    <p id="location">location there</p>
-    <div id="map"></div>
-    <div id="events"></div>
-    <script src="script.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js" async defer></script>
-  </body>
-</html> -->
