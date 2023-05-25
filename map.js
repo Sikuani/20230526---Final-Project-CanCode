@@ -7,14 +7,15 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 const getLocation = (lat, lng) => {
-  map.setView([lat, lng], 15);
+  map.setView([lat, lng], 10);
+
+  const marker = L.marker([lat, lng]).addTo(map);
+  marker.bindPopup('You are here').openPopup();
 };
 
-/* const marker = L.marker([lat, lng]).addTo(map);
-marker.bindPopup('Tu ubicación').openPopup(); */
-
-if ('geolocation' in navigator) { //API del navegador si tiene
-  navigator.geolocation.getCurrentPosition( //stackOverflow
+if ('geolocation' in navigator) {
+  //API del navegador si tiene
+  navigator.geolocation.getCurrentPosition(
     (position) => {
       const { latitude, longitude } = position.coords; //destructuring position.coords.latitude
       getLocation(latitude, longitude);
@@ -27,22 +28,18 @@ if ('geolocation' in navigator) { //API del navegador si tiene
   console.log('Geolocation not supported in your browser');
 }
 
-const showMarkers = (coord) => { //evento pink coordenadas evento 
-  const marker = L.marker([coord.latitude, coord.longitude]).addTo(map); //pines azules
+const showMarkers = (coord, eventName, eventPlace) => {
+  const marker = L.marker([coord.latitude, coord.longitude])
+    .addTo(map)
+    .bindPopup(
+      `<h5>${eventName}</h5>
+       <h6>${eventPlace}</h6>`
+    )
+    .openPopup();
 };
 
+const showLocation = (coord) => {
+  map.setView([coord.latitude, coord.longitude], 12, { animation: true });
+};
 
-const popupEvent = (event) => {
-  L.popup().setLatLng([
-    event._embedded.venues[0].location.latitude,
-    event._embedded.venues[0].location.longitude,
-  ]).setContent(`
-    <h3>${event.name}</h3>
-    <h3>Local date: ${event.dates.start.localDate} Local time: ${event.dates.start.localTime}</h3>
-    <p>Address: ${event._embedded.venues[0].address.line1}</p>
-    `);
-}
-
-
-
-export { showMarkers, popupEvent };
+export { showMarkers, showLocation };
