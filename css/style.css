@@ -1,13 +1,8 @@
 html {
-  /* font-size: 62.5%; */
   overflow-x: hidden;
   scroll-padding-top: 3rem;
   scroll-behavior: smooth;
 }
-
-/* html::-webkit-scrollbar {
-  width: 0.8rem;
-} */
 
 html::-webkit-scrollbar-track {
   background: transparent;
@@ -30,7 +25,7 @@ section {
   padding: 2rem 0;
 }
 
-/* HEADER */
+/* header starts */
 .headerEvents {
   background: var(--bgcolor-primary);
   display: flex;
@@ -45,9 +40,14 @@ section {
   z-index: 1000;
 }
 
-.headerLogo img {
-  height: 3.5rem;
-  width: 3.5rem;
+.headerLogo {
+  margin: 0;
+  padding: 5px 1rem;
+  font-size: 2rem;
+}
+
+.headerLogo span {
+  color: var(--textcolor-red);
 }
 
 .headerNavBar a {
@@ -84,166 +84,10 @@ section {
 #headerIconsMenu-btn {
   display: none;
 }
-
-.headerSearchForm {
-  position: absolute;
-  top: 115%;
-  right: 5%;
-  background: var(--bgcolor-gray);
-  width: 50%;
-  height: 5rem;
-  display: flex;
-  align-items: center;
-  transform: scaleY(0);
-  transform-origin: top;
-  border-radius: 5px;
-}
-
-.headerSearchForm.active {
-  transform: scaleY(1);
-}
-
-.headerSearchForm input {
-  height: 100%;
-  width: 100%;
-  background: var(--bgcolor-gray);
-  color: var(--textcolor-dark);
-  padding: 2rem;
-  text-transform: none;
-}
-
-.headerSearchForm label {
-  cursor: pointer;
-  font-size: 1.5rem;
-  margin-right: 1.5rem;
-  color: var(--textcolor-dark);
-}
-
-.headerSearchForm label:hover {
-  color: var(--textcolor-lightSalmon);
-}
-
-.headerCartItemsContainer {
-  position: absolute;
-  top: 100%;
-  right: -100%;
-  height: calc(100vh - 9.5rem);
-  width: 35rem;
-  background: var(--bgcolor-gray);
-  padding: 0 1.5rem;
-}
-
-.headerCartItemsContainer.active {
-  right: 0;
-}
-
-.headerCartItemsContainer .CartItem {
-  position: relative;
-  margin: 2rem 0;
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-.headerCartItemsContainer .CartItem .fa-times {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  cursor: pointer;
-  color: var(--textcolor-dark);
-}
-
-.headerCartItemsContainer .CartItem .fa-times:hover {
-  color: var(--textcolor-lightSalmon);
-}
-
-.headerCartItemsContainer .CartItem img {
-  height: 12rem;
-  box-shadow: var(--shadow);
-}
-
-.headerCartItemsContainer .CartItem img:hover {
-  transform: scale(1.1);
-  transition: 0.3s ease-in-out;
-}
-
-.headerCartItemsContainer .CartItem .content h3 {
-  color: var(--textcolor-dark);
-  padding-bottom: 0.5rem;
-}
-
-.headerCartItemsContainer .CartItem .content .price {
-  color: var(--bgcolor-brown);
-}
-
-.headerCartItemsContainer_Checkout {
-  margin-top: 1rem;
-  display: inline-block;
-  padding: 0.9rem 3rem;
-  font-weight: 800;
-  width: 100%;
-}
-
-.headerCartItemsContainer_Checkout:hover {
-  letter-spacing: 0.2rem;
-}
-
-/* About section starts */
-.aboutHeading,
-.menuHeading,
-.productsHeading,
-.reviewsHeading,
-.contactHeading,
-.blogsHeading {
-  text-align: center;
-  color: var(--bgcolor-brown);
-  text-transform: uppercase;
-  padding: 1.5rem;
-}
-.aboutHeading span,
-.menuHeading span,
-.productsHeading span,
-.reviewsHeading span,
-.contactHeading span,
-.blogsHeading span {
-  color: var(--textcolor-dark);
-}
-
-.aboutBoxContainer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding: 2rem;
-}
-
-.aboutBoxContainer .aboutRowImage {
-  flex: 1 1 20rem;
-}
-
-.aboutBoxContainer.aboutRowImage img {
-  height: 10rem;
-}
-
-.aboutBoxContainer .aboutRowContent {
-  flex: 1 1 20rem;
-  padding: 2rem;
-}
-
-.aboutBoxContainer .aboutRowContent p {
-  padding: 1rem 0;
-  line-height: 1.8;
-}
-
-.aboutRowContent span {
-  color: var(--textcolor-lightSalmon);
-
-}
-
-/* About section ends */
+/* header ends */
 
 /* Events section starts */
-.EventsHeading {
+.eventsHeading {
   text-align: center;
 }
 
@@ -260,9 +104,8 @@ section {
   flex-wrap: wrap;
   gap: 1rem;
   padding: 1rem;
-  margin: 1rem 0;
+  margin: 0;
   width: 100%;
-  
 }
 
 #date-picker {
@@ -275,7 +118,6 @@ section {
 #search-container option {
   color: var(--textcolor-dark);
 }
-
 
 .main-container {
   display: flex;
@@ -299,9 +141,8 @@ section {
 
 #map {
   width: 80%;
-  height: 400px;
+  height: 350px;
 }
-
 
 .event-img {
   max-width: 250px;
@@ -330,60 +171,136 @@ section {
 }
 /* Events section Ends */
 
+/* About section starts */
+.aboutHeading,
+.menuHeading,
+.productsHeading,
+.reviewsHeading,
+.contactHeading,
+.blogsHeading {
+  text-align: center;
+  color: var(--bgcolor-brown);
+  text-transform: uppercase;
+  padding: 0.5rem;
+}
+.aboutHeading span,
+.menuHeading span,
+.productsHeading span,
+.reviewsHeading span,
+.contactHeading span,
+.blogsHeading span {
+  color: var(--textcolor-dark);
+}
+
+.aboutBoxContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0;
+  margin-top: 0;
+}
+
+.aboutBoxContainer .aboutRowImage {
+  flex: 1 1 20rem;
+}
+
+.aboutBoxContainer.aboutRowImage img {
+  height: 10rem;
+  border: 2px solid red;
+}
+
+.aboutBoxContainer .aboutRowContent {
+  flex: 1 1 20rem;
+  padding: 2rem;
+}
+
+.aboutBoxContainer .aboutRowContent p {
+  padding: 1rem 0;
+  line-height: 1.8;
+}
+
+.aboutRowContent span {
+  color: var(--textcolor-red);
+}
+/* About section ends */
 
 /* Review section Starts */
-.reviewsBoxContainer {
+.testimony {
+  background-color: var(--bgcolor-gray);
+}
+
+.testimony_container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
-  gap: 2.5rem 1.7rem;
-  margin: 1rem;
+  grid-template-columns: 50px 1fr 50px;
+  gap: 1em;
+  align-items: center;
 }
 
-.containerReviews {
-  border: var(--border);
-  text-align: center;
-  padding: 2rem 1rem;
-  border-radius: 8px;
-}
-
-.containerReviews p {
+.testimony_body {
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2em;
+  grid-column: 2/3;
+  grid-row: 1/2;
+  opacity: 0;
+  pointer-events: none;
   padding: 1rem;
-  line-height: 1.5;
 }
 
-.containerReviews img {
-  height: 9rem;
-  width: 9rem;
+.testimony_body--show {
+  pointer-events: unset;
+  opacity: 1;
+  transition: opacity 1.5s ease-out;
+}
+
+.testimony_img {
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
   object-fit: cover;
+  object-position: 50% 30%;
 }
 
-.containerReviews h3 {
-  padding: 2rem 1rem 0;
+#testimony_img3 {
+  object-position: 40% 70%;
 }
 
-.reviewContentStar {
-  font-size: 1.2rem;
+.testimony_texts {
+  max-width: 700px;
 }
+
+.testimony_course {
+  background-color: var(--bgcolor-brown);
+  color: var(--bgcolor-light);
+  display: inline-block;
+  padding: 5px;
+}
+
+.testimony_arrow {
+  width: 90%;
+  cursor: pointer;
+}
+
+.testimony_review {
+  font-size: 1.5rem;
+  font-style: italic;
+}
+
 /* Review section Ends */
 
 /* Contact section Starts */
 .contactRow {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 2rem;
-  padding: 1.5rem;
-  margin: 2.5rem 0;
-  width: 50%;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  gap: 1rem;
 }
 
 .contactRow .contactRowForm {
-  flex: auto;
-  padding: 2rem 0;
-  text-align: center;
+  width: 50%;
 }
 
 .contactRowFormInputBox {
@@ -397,13 +314,13 @@ section {
 
 .contactRowFormInputBox span {
   font-size: 1.5rem;
-  padding-left: 2rem;
+  padding: 0 1.5rem;
 }
 
 .contactRowFormInputBox input {
   width: 100%;
   padding: 1rem;
-  background: none;
+  background: var(--bgcolor-light);
 }
 /* Contact section Ends */
 
@@ -418,7 +335,7 @@ section {
   gap: 2rem;
 }
 
-.companyInfoLogo {
+.companyLogo-socialMedia {
   display: flex;
   flex-direction: column;
   place-items: center;
@@ -444,19 +361,19 @@ section {
   color: var(--textcolor-red);
 }
 
-.companyInfoSocialNetworks {
+.companyInfoSocialMedia {
   display: flex;
   justify-content: center;
   gap: 2rem;
   padding: 1rem 0;
 }
 
-.companyInfoSocialNetworks img {
+.companyInfoSocialMedia img {
   width: 40px;
   transition: 0.2s ease-in;
 }
 
-.companyInfoSocialNetworks img:hover {
+.companyInfoSocialMedia img:hover {
   transform: scale(1.1);
   cursor: pointer;
 }
@@ -486,7 +403,6 @@ footer span {
 footer a {
   color: red;
 }
-
 /* Footer ends*/
 
 /* M E D I A  Q U E R I E S */
@@ -513,15 +429,16 @@ footer a {
 
   #headerIconsMenu-btn {
     display: inline-block;
+    align-self: center;
   }
 
   .headerNavBar {
     position: absolute;
-    top: 100%;
+    top: 110%;
     right: -100%;
     background: var(--textcolor-lightbrown);
     width: 15rem;
-    height: calc(70vh - 9rem);
+    height: calc(55vh - 7rem);
   }
 
   .headerNavBar.active {
@@ -573,5 +490,3 @@ footer a {
     padding: 1rem 0;
   }
 }
-
-/* codigo nuevo */

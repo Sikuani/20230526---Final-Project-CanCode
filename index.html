@@ -19,14 +19,6 @@
       rel="stylesheet"
     />
 
-    <!-- Bootstrap -->
-    <!-- <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
-      crossorigin="anonymous"
-    /> -->
-
     <!-- Awesome -->
     <link
       rel="stylesheet"
@@ -43,93 +35,54 @@
   <body>
     <!-- header section starts -->
     <header class="headerEvents">
-      <a href="#" class="headerLogo">
-        <img src="images/Logo.png" alt="" srcset="" />
-      </a>
+      <div class="headerLogo">
+        <a href="#events">World<span>Events</span></a>
+      </div>
 
       <nav class="headerNavBar">
         <a href="#events">Our events</a>
         <a href="#about">About us</a>
-        <a href="#reviews">Reviews</a>
+        <a href="#testimony">Reviews</a>
         <a href="#contact">Contact</a>
-        <a href="login.html" class="btn">Login</a>
+        <a href="#companyInfo">Our Company</a>
       </nav>
 
       <div class="headerIcons">
-        <div class="fas fa-search" id="search-btn"></div>
-        <div class="fas fa-shopping-cart" id="cart-btn"></div>
+        <a href="login.html" class="btn">Login</a>
         <div class="fas fa-bars" id="headerIconsMenu-btn"></div>
-      </div>
-
-      <div class="headerSearchForm">
-        <input
-          type="search"
-          id="headerSearchBox"
-          placeholder="Search here..."
-        />
-        <label for="headerSearchBox" class="fas fa-search"></label>
-      </div>
-
-      <div class="headerCartItemsContainer">
-        <div class="CartItem">
-          <span class="fas fa-times"></span>
-          <img src="images/apparel1.png" alt="" />
-          <div class="content">
-            <h3>Cart Item 01</h3>
-            <div class="CartItem_01_Price price">$15.99</div>
-          </div>
-        </div>
-        <div class="CartItem">
-          <span class="fas fa-times"></span>
-          <img src="images/apparel2.png" alt="" />
-          <div class="content">
-            <h3>Cart Item 02</h3>
-            <div class="CartItem_02_Price price">$20.99</div>
-          </div>
-        </div>
-        <div class="CartItem">
-          <span class="fas fa-times"></span>
-          <img src="images/apparel3.png" alt="" />
-          <div class="content">
-            <h3>Cart Item 03</h3>
-            <div class="CartItem_03_Price price">$31.99</div>
-          </div>
-        </div>
-        <div class="CartItem">
-          <span class="fas fa-times"></span>
-          <img src="images/apparel4.png" alt="" />
-          <div class="content">
-            <h3>Cart Item 04</h3>
-            <div class="CartItem_04_Price price">$22.99</div>
-          </div>
-        </div>
-        <a href="#" class="headerCartItemsContainer_Checkout btn"
-          >Checkout now</a
-        >
       </div>
     </header>
     <!-- header section ends -->
 
     <!-- Events section starts -->
     <section class="events" id="events">
-      <h1 class="EventsHeading">Our <span>Events</span></h1>
+      <h1 class="eventsHeading">Our <span>Events</span></h1>
       <div class="eventsContainer">
         <div id="search-container" class="dropdown d-flex p-2 gap-3">
-          <input type="date" id="date-picker">
-          <select name="cities" id="select-cities" class="btn btn-primary dropdown-toggle" >
+          <input type="date" id="date-picker" />
+          <select
+            name="cities"
+            id="select-cities"
+            class="btn btn-primary dropdown-toggle"
+          >
             <option value="">Select city</option>
           </select>
-          <select name="event-type" id="select-type-events" class="btn btn-primary dropdown-toggle">
+          <select
+            name="event-type"
+            id="select-type-events"
+            class="btn btn-primary dropdown-toggle"
+          >
             <option value="" class="dropdown-menu">Select event</option>
             <option value="" class="dropdown-item">All events</option>
           </select>
-          <button id="search-button" class="btn btn-primary ">Search</button>
+          <button id="search-button" class="btn btn-primary">Search</button>
         </div>
 
         <div class="main-container">
           <div id="map"></div>
           <div id="events-container"></div>
         </div>
+      </div>
     </section>
 
     <!-- Events section ends -->
@@ -137,98 +90,118 @@
     <!-- About section starts -->
     <section class="about" id="about" title="section_about">
       <h1 class="aboutHeading"><span>About</span> us</h1>
-
       <div class="aboutBoxContainer">
         <div class="aboutRowImage">
-          <!-- <img src="images/CoffeeWallpaper3.jpg" alt="" srcset="" /> -->
-          <img
-            src="images/event.jpg"
-            alt=""
-            srcset=""
-          />
+          <img id="aboutRowImage" src="images/event.jpg" />
         </div>
         <div class="aboutRowContent">
-          <h3>What makes <span>World Events</span> an APP special?</h3>
+          <h3>What makes World<span>Events</span> special?</h3>
+          <p>We are the best event search service worldwide.</p>
           <p>
-            We are the best event search service worldwide.
+            Easy for you to locate your events by range of dates, cities and
+            type of events, thus filtering your special interests.
           </p>
           <p>
-            Easy for you to locate your events by range of dates, cities and type of events, thus filtering your special interests.
+            You have a wide range of events geolocated on the map to facilitate
+            their location and better decisions.
           </p>
-          <p>
-            You have a wide range of events geolocated on the map to facilitate their location and better decisions.
-          </p>
-
-          <a href="#" class="aboutRowBtn btn">Get yours now</a>
         </div>
       </div>
     </section>
     <!-- About section ends -->
 
     <!-- Review section starts -->
-    <section class="reviews" id="reviews">
-      <h1 class="reviewsHeading">Customer's <span>review</span></h1>
-      <div class="reviewsBoxContainer">
-        <div class="containerReviews review1">
-          <p>
-            <i class="fa-solid fa-quote-left"></i> Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Ut quibusdam similique labore sapiente
-            <i class="fa-solid fa-quote-right"></i>
-          </p>
-          <img
-            src="https://source.unsplash.com/random/401x330"
-            alt=""
-            srcset=""
-          />
-          <h3>Jhon Deo</h3>
-          <div class="reviewContentStar">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
+    <section class="testimony" id="testimony">
+      <h1 class="aboutHeading"><span>Our</span> reviews</h1>
+      <div class="testimony_container container">
+        <img
+          src="images/leftarrow.svg"
+          alt=""
+          class="testimony_arrow"
+          id="before"
+        />
+        <section class="testimony_body testimony_body--show" data-id="1">
+          <div class="testimony_texs">
+            <h2 class="subtitle">
+              My name is Leidy Vallado,
+              <span class="testimony_course">Lawyer.</span>
+            </h2>
+            <p class="testimony_review">
+              "I really liked the service provided by the WorldEvents website,
+              fast and easy to use".
+            </p>
           </div>
-        </div>
-        <div class="containerReviews review2">
-          <p>
-            <i class="fa-solid fa-quote-left"></i> Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Ut quibusdam similique labore sapiente
-            <i class="fa-solid fa-quote-right"></i>
-          </p>
-          <img
-            src="https://source.unsplash.com/random/401x331"
-            alt=""
-            srcset=""
-          />
-          <h3>Alicia Monique</h3>
-          <div class="reviewContentStar">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
+          <figure class="testimony_picture">
+            <img src="images/face1.jpg" class="testimony_img" alt="" />
+          </figure>
+        </section>
+
+        <section class="testimony_body" data-id="2">
+          <div class="testimony_text">
+            <h2 class="subtitle">
+              Hi, I'm Janne Mckloud,
+              <span class="testimony_course">Engineering student.</span>
+            </h2>
+            <p class="testimony_review">
+              "I like the website because they have a wide variety of events
+              where I can choose what to do in my spare time".
+            </p>
           </div>
-        </div>
-        <div class="containerReviews review3">
-          <p>
-            <i class="fa-solid fa-quote-left"></i> Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Ut quibusdam similique labore sapiente
-            <i class="fa-solid fa-quote-right"></i>
-          </p>
-          <img
-            src="https://source.unsplash.com/random/401x332"
-            alt=""
-            srcset=""
-          />
-          <h3>Nakuma Matata</h3>
-          <div class="reviewContentStar">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
+          <figure class="testimony_picture">
+            <img src="images/face2.jpg" class="testimony_img" alt="" />
+          </figure>
+        </section>
+
+        <section class="testimony_body" data-id="3">
+          <div class="testimony_text">
+            <h2 class="subtitle">
+              I'm Angela Vittona,
+              <span class="testimony_course">Sports fan.</span>
+            </h2>
+            <p class="testimony_review">
+              "I love sporting events, whatever I enjoy. This website helps me
+              decide quickly among the wide variety available. The interactive
+              map helps me a lot".
+            </p>
           </div>
-        </div>
+          <figure class="testimony_picture">
+            <img
+              src="images/face3.jpg"
+              class="testimony_img"
+              alt=""
+              id="testimony_img3"
+            />
+          </figure>
+        </section>
+
+        <section class="testimony_body" data-id="4">
+          <div class="testimony_text">
+            <h2 class="subtitle">
+              Hi, I'm Karla Mendoza from Spain,
+              <span class="testimony_course">Event journalist.</span>
+            </h2>
+            <p class="testimony_review">
+              "I really enjoy my job, this website has helped me to find out
+              about upcoming events in my nearby area and to be able to organize
+              myself to cover them".
+            </p>
+          </div>
+          <figure class="testimony_picture">
+            <img
+              src="images/face4.jpg"
+              class="testimony_img"
+              alt=""
+              id="testimony_img3"
+            />
+          </figure>
+        </section>
+
+        <img
+          src="images/rightarrow.svg"
+          alt=""
+          class="testimony_arrow"
+          id="next"
+        />
       </div>
     </section>
     <!-- Review section ends -->
@@ -238,9 +211,8 @@
       <h1 class="contactHeading">Contact <span>us</span></h1>
 
       <div class="contactRow">
-        
         <form action="" class="contactRowForm">
-          <h3>Get in touch</h3>
+          <h3>Get in touchs</h3>
           <div class="contactRowFormInputBox">
             <span class="fas fa-user"></span>
             <input type="text" placeholder="Name" />
@@ -253,18 +225,45 @@
             <span class="fas fa-phone"></span>
             <input type="tel" placeholder="Phone number" />
           </div>
-          <input type="submit" value="contact now" class="btn" />
+          <input type="submit" value="Submit" class="btn" />
         </form>
       </div>
     </section>
+
     <!-- Contact section ends -->
 
     <!-- Company info section-->
     <section class="companyInfo" id="companyInfo">
       <div class="companyInfoContainer">
-        <div class="companyInfoLogo">
-          <a href="#home"> <img src="images/logo.png" alt="" /></a>
-          <h1>World<span>Events</span></h1>
+        <div class="companyLogo-socialMedia">
+          <div class="logo">
+            <h1>World<span>Events</span></h1>
+          </div>
+
+          <!-- Social media -->
+          <div class="companyInfoSocialMedia">
+            <a href="https://facebook.com"
+              ><img src="images/facebook_color.png" class="social_facebook"
+            /></a>
+            <a href="https://twitter.com/"
+              ><img
+                src="images/twitter_color.png"
+                class="social_twitter"
+                alt=""
+            /></a>
+            <a href="https://www.instagram.com/"
+              ><img
+                src="images/instagram_color.png"
+                class="social_instagram"
+                alt=""
+            /></a>
+            <a href="https://www.linkedin.com/"
+              ><img
+                src="images/linkedin_color.png"
+                class="social_linkedin"
+                alt=""
+            /></a>
+          </div>
         </div>
 
         <div class="companyInfoCorporateCulture">
@@ -281,31 +280,12 @@
           <hr />
           <div class="corporateCulturePolitics">
             <ul>
-              <li><a href="">World Events &copy;</a></li>
-              <li><a href="docs/1. Terminos de uso.pdf">Term of Use</a></li>
-              <li><a href="docs/2. Copyright.pdf">Copyright</a></li>
+              <li><a href="#">World Events &copy;</a></li>
+              <li><a href="#">Term of Use</a></li>
+              <li><a href="#">Copyright</a></li>
               <li><a href="docs/3. Politica de cookies.pdf">Cookies</a></li>
               <li><a href="">Privacy</a></li>
             </ul>
-          </div>
-          <hr />
-          <div class="companyInfoSocialNetworks">
-            <img
-              src="images/facebook_color.png"
-              class="social_facebook"
-              alt=""
-            />
-            <img src="images/twitter_color.png" class="social_twitter" alt="" />
-            <img
-              src="images/linkedin_color.png"
-              class="social_linkedin"
-              alt=""
-            />
-            <img
-              src="images/instagram_color.png"
-              class="social_instagram"
-              alt=""
-            />
           </div>
         </div>
       </div>
@@ -321,7 +301,10 @@
           translation into any language without the written authorization of its
           owner.
         </p>
-        <p>Our page is designed under the instructions and parameters of <a href="https://cancode.org/">Cancode Academy.</a></p>
+        <p>
+          Our page is designed under the instructions and parameters of
+          <a href="https://cancode.org/">Cancode Academy.</a>
+        </p>
       </footer>
     </div>
 
@@ -335,6 +318,8 @@
       integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
       crossorigin="anonymous"
     ></script>
+    <script src="slider.js"></script>
+    <script src="navbar.js"></script>
     <script type="module" src="index.js" defer></script>
   </body>
 </html>
