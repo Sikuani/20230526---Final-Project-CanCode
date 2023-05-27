@@ -131,8 +131,19 @@ section {
   width: 100%;
 }
 
-.event-container {
+#events-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#events-container h2 {
   width: 100%;
+  text-align: center;
+}
+
+
+.event-container {
+  width: 45%;
   display: flex;
   gap: 15px;
   padding: 15px;
@@ -414,11 +425,32 @@ footer a {
 
 @media (max-width: 960px) {
   html {
-    font-size: 85%;
+    font-size: 85%; 
   }
 
   .home {
     text-align: center;
+  }
+  
+  .event-container {
+    width: 50%;
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+    cursor: pointer;
+  }
+  
+  #map {
+    width: 80%;
+    height: 350px;
+  }
+  
+  .event-img {
+    max-width: 200px;
+  }
+
+  #ourCompany {
+    display: none;
   }
 }
 
@@ -438,7 +470,7 @@ footer a {
     right: -100%;
     background: var(--textcolor-lightbrown);
     width: 15rem;
-    height: calc(55vh - 7rem);
+    height: calc(45vh - 7rem);
   }
 
   .headerNavBar.active {
@@ -459,14 +491,33 @@ footer a {
   .homeContent {
     padding: 0 4rem;
   }
+
+  .event-container {
+    width: 50%;
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+    cursor: pointer;
+  }
+  
+  .event-img {
+    max-width: 150px;
+  }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 500px) {
   html {
     font-size: 70%;
   }
 
-  .aboutRowContent {
+  .aboutBoxContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+  }
+
+   .aboutRowContent {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -488,5 +539,27 @@ footer a {
 
   .contactRow .contactRowForm {
     padding: 1rem 0;
+  }
+
+  #events-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+    cursor: pointer;    
+  }
+
+  .event-container {
+    width: 100%;
+  }
+  
+  .event-img {
+    max-width: 150px;
+  }
+
+  .testimony_body {
+    display: flex;
+    flex-direction: column;
   }
 }

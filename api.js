@@ -9,7 +9,7 @@ const fetchData = async (city, eventType) => {
       country: 'US',
       city: city,
       classificationName: eventType,
-      size: 7, // API Limit 200 due CORS policy's
+      size: 6, // API Limit 200 due CORS policy's
     };
 
     //JSON ==> text(url)
@@ -18,8 +18,6 @@ const fetchData = async (city, eventType) => {
     const data = await response.json();
 
     const events = data._embedded.events;
-
-    console.log(events);
 
     return events;
   } catch (error) {
@@ -41,7 +39,7 @@ const fetchCities = async () => {
 
     const events = data._embedded.events;
     const cities = events.map(event => event._embedded.venues[0].city.name); 
-    // Elimina ciudades duplicadas
+    
     const uniqueCities = [...new Set(cities)];
 
     return uniqueCities;
@@ -63,7 +61,7 @@ const fetchEventTypes = async () => {
   const eventTypes = data._embedded.events.map(
     (evento) => evento.classifications[0].genre.name
   );
-  const uniqueEventTypes = [...new Set(eventTypes)]; // Eliminar tipos de eventos duplicados
+  const uniqueEventTypes = [...new Set(eventTypes)]; 
 
   return uniqueEventTypes;
 };
@@ -72,7 +70,7 @@ const fetchGeoEvents = async () => {
   try {
     const params = {
       apikey: API_KEY,
-      size: 7,
+      size: 6,
       city: "New York",
     };
 
